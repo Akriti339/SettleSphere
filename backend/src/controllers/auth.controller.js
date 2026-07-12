@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const generateToken = require("../utils/generateToken");
 
-const cookieOptions = { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", maxAge: 7 * 24 * 60 * 60 * 1000 };
+const cookieOptions = require("../utils/cookieOptions");
 const publicUser = (user) => ({ id: user._id, name: user.name, username: user.username, email: user.email, group: [], list: [] });
 
 const register = async (req, res, next) => {

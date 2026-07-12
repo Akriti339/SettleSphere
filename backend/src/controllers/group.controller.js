@@ -1,0 +1,9 @@
+const Group = require("../models/Group");
+const Expense = require("../models/Expense");
+
+const listGroups = async (req, res, next) => { try { const groups = await Group.find({ members: req.user._id }).populate("creator members", "name username email").sort("-createdAt"); res.json({ groups }); } catch (error) { next(error); } };
+const createGroup = async (req, res, next) => { try { const group = await Group.create({ groupName: req.body.groupName, creator: req.user._id, members: [...new Set([req.user._id.toString(), ...(req.body.members || [])])] }); res.status(201).json({ group }); } catch (error) { next(error); } };
+const getGroup = async (req, res, next) => { try { const group = await Group.findOne({ _id: req.params.id, members: req.user._id }).populate("creator members", "name username email"); if (!group) return res.status(404).json({ message: "Group not found" }); const expenses = await Expense.find({ group: group._id }).populate("paidBy splitMembers", "name username").sort("-createdAt"); res.json({ group, expenses }); } catch (error) { next(error); } };
+const addMember = async (req, res, next) => { try { const group = await Group.findOneAndUpdate({ _id: req.params.id, creator: req.user._id }, { $addToSet: { members: req.body.userId } }, { new: true }); if (!group) return res.status(404).json({ message: "Group not found or not owned by you" }); res.json({ group }); } catch (error) { next(error); } };
+const removeGroup = async (req, res, next) => { try { const group = await Group.findOneAndDelete({ _id: req.params.id, creator: req.user._id }); if (!group) return res.status(404).json({ message: "Group not found or not owned by you" }); await Expense.deleteMany({ group: group._id }); res.status(204).send(); } catch (error) { next(error); } };
+module.exports = { listGroups, createGroup, getGroup, addMember, removeGroup };

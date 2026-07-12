@@ -1,0 +1,5 @@
+const Expense = require("../models/Expense");
+const Group = require("../models/Group");
+const createExpense = async (req, res, next) => { try { const { description, amount, groupId, paidBy, splitMembers } = req.body; const group = await Group.findOne({ _id: groupId, members: req.user._id }); if (!group) return res.status(404).json({ message: "Group not found" }); const expense = await Expense.create({ description, amount, group: groupId, paidBy: paidBy || req.user._id, splitMembers }); res.status(201).json({ expense }); } catch (error) { next(error); } };
+const removeExpense = async (req, res, next) => { try { const expense = await Expense.findById(req.params.id); if (!expense) return res.status(404).json({ message: "Expense not found" }); if (String(expense.paidBy) !== String(req.user._id)) return res.status(403).json({ message: "Only the payer can remove this expense" }); await expense.deleteOne(); res.status(204).send(); } catch (error) { next(error); } };
+module.exports = { createExpense, removeExpense };

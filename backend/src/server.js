@@ -1,6 +1,4 @@
 require("dotenv").config();
-console.log("MONGO_URI:", process.env.MONGO_URI);
-console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
 const app = require("./app");
 const connectDB = require("./config/db");
@@ -39,8 +37,10 @@ const gracefulShutdown = (signal) => {
   console.log(`\n${signal} received. Shutting down gracefully...`);
 
   if (server) {
-    server.close(() => {
+    server.close(async () => {
+      await mongoose.connection.close();
       console.log("✅ HTTP server closed.");
+      console.log("✅ MongoDB connection closed.");
       process.exit(0);
     });
   } else {

@@ -23,9 +23,6 @@ SettleSphere makes it easier to manage everyday shared spending such as trips, h
 
 - **Frontend:** React, TypeScript, Vite
 - **Styling:** Tailwind CSS, CSS
-- **Backend Services:** Appwrite
-- **Database:** Appwrite Databases
-- **Authentication:** Appwrite Account API
 - **Deployment:** Vercel
 
 ## Project Structure

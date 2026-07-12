@@ -157,40 +157,6 @@ npm install
 ---
 
 
-# ▶️ Run the Application
-
-### Start Backend
-
-```bash
-cd backend
-
-npm run dev
-```
-
-Backend runs at
-
-```
-http://localhost:5000
-```
-
----
-
-### Start Frontend
-
-```bash
-cd frontend
-
-npm run dev
-```
-
-Frontend runs at
-
-```
-http://localhost:5173
-```
-
----
-
 # 📡 API Endpoints
 
 ## Authentication
@@ -245,25 +211,6 @@ http://localhost:5173
 
 ---
 
-# 📸 Screenshots
-
-> Add screenshots of your application here.
-
-Example:
-
-```
-Home Page
-
-Login Page
-
-Expense Dashboard
-
-Group Details
-
-Settlement Screen
-```
-
----
 
 # 🌟 Future Improvements
 

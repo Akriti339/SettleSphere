@@ -156,31 +156,6 @@ npm install
 
 ---
 
-# ⚙️ Environment Variables
-
-## Backend (`backend/.env`)
-
-```env
-PORT=5000
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_secret_key
-
-CLIENT_URL=http://localhost:5173
-
-NODE_ENV=development
-```
-
----
-
-## Frontend (`frontend/.env.local`)
-
-```env
-VITE_API_URL=http://localhost:5000
-```
-
----
 
 # ▶️ Run the Application
 

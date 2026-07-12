@@ -97,7 +97,7 @@ const SignupForm = () => {
             <img
               width="40"
               height="40"
-              src="/assets/images/split-logo.png"
+              src="/assets/images/my-logo.png"
               alt="cash-in-hand"
             />
           </span>

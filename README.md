@@ -1,44 +1,79 @@
-# SettleSphere
+# 💸 SettleSphere
 
-A modern expense-sharing web application that helps friends and groups record shared expenses, track balances, and settle payments clearly.
+A full-stack expense-sharing platform that helps friends, roommates, and travel groups split expenses, track balances, and settle payments effortlessly.
 
-## Overview
+---
 
-SettleSphere makes it easier to manage everyday shared spending such as trips, hostel expenses, meals, subscriptions, and group activities. Users can add friends, create groups, log expenses, split amounts among members, and view activity in one place.
+## ✨ Features
 
-## Features
+- 🔐 Secure user authentication with JWT
+- 👥 Add and manage friends
+- 🏠 Create and manage expense groups
+- 💰 Record shared expenses
+- ⚖️ Split expenses among multiple members
+- 📊 Track who paid and who owes whom
+- 🤝 Settle outstanding balances
+- 📜 View complete group activity history
+- 📱 Responsive UI for desktop and mobile
+- 🎨 Modern purple-themed interface
 
-- Create an account and sign in securely
-- Add and manage friends
-- Create expense-sharing groups
-- Record expenses with amount, description, and date
-- Split an expense among multiple members
-- Track who paid and who owes money
-- View recent expense activity
-- Mark settlements after a payment is completed
-- Responsive interface for desktop and mobile screens
-- Purple-themed modern user interface
+---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend:** React, TypeScript, Vite
-- **Styling:** Tailwind CSS, CSS
-- **Deployment:** Vercel
+### Frontend
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Query
+- React Router
 
-## Project Structure
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- bcrypt
+- Cookie Parser
+
+### Deployment
+- Vercel (Frontend)
+- Render / Railway (Backend)
+
+---
+
+## 📂 Project Structure
 
 ```text
-SettleSphere/
-├── public/              # Static assets
-├── src/
-│   ├── _auth/           # Authentication pages and components
-│   ├── components/      # Reusable UI components
-│   ├── context/         # Global application state
-│   ├── hooks/           # Custom React hooks
-│   ├── lib/             # Appwrite configuration and API functions
-│   ├── types/           # TypeScript type definitions
-│   ├── App.tsx          # Main application component
-│   └── main.tsx         # Application entry point
-├── data.json            # Sample project data
-├── vercel.json          # Vercel SPA routing configuration
-└── package.json          # Dependencies and scripts
+SettleSphere
+│
+├── frontend
+│   ├── public
+│   ├── src
+│   │   ├── _auth
+│   │   ├── _root
+│   │   ├── components
+│   │   ├── context
+│   │   ├── hooks
+│   │   ├── lib
+│   │   └── types
+│   ├── package.json
+│   └── vite.config.ts
+│
+├── backend
+│   ├── src
+│   │   ├── config
+│   │   ├── controllers
+│   │   ├── middleware
+│   │   ├── models
+│   │   ├── routes
+│   │   ├── utils
+│   │   ├── app.js
+│   │   └── server.js
+│   ├── package.json
+│   └── .env.example
+│
+├── README.md
+└── vercel.json

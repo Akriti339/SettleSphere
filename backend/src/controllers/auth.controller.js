@@ -18,12 +18,38 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email: email?.toLowerCase() }).select("+password");
-    if (!user || !(await user.comparePassword(password || ""))) return res.status(401).json({ message: "Invalid email or password" });
-    res.cookie("token", generateToken(user._id), cookieOptions).json({ user: publicUser(user) });
-  } catch (error) { next(error); }
-};
 
+    console.log("Login attempt:", email);
+
+    const user = await User.findOne({
+      email: email?.toLowerCase(),
+    }).select("+password");
+
+    console.log("User found:", !!user);
+
+    if (!user) {
+      return res.status(401).json({
+        message: "User not found",
+      });
+    }
+
+    const isMatch = await user.comparePassword(password || "");
+
+    console.log("Password match:", isMatch);
+
+    if (!isMatch) {
+      return res.status(401).json({
+        message: "Invalid password",
+      });
+    }
+
+    res.cookie("token", generateToken(user._id), cookieOptions).json({
+      user: publicUser(user),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 const logout = (req, res) => res.clearCookie("token", cookieOptions).status(204).send();
 const me = (req, res) => res.json({ user: publicUser(req.user) });
 module.exports = { register, login, logout, me };

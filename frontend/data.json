@@ -1,0 +1,23 @@
+{
+  "appName": "SettleSphere",
+  "description": "A collaborative expense-sharing application for groups and friends.",
+  "features": [
+    "Create groups and add members",
+    "Add shared expenses",
+    "Split expenses equally or among selected members",
+    "Track individual balances",
+    "View activity history",
+    "Simplify debts to minimize transactions"
+  ],
+  "techStack": {
+    "frontend": ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    "backend": ["Appwrite"],
+    "deployment": ["Vercel"]
+  },
+  "theme": {
+    "primaryColor": "#8B5CF6",
+    "accentColor": "#7C3AED",
+    "mode": "Dark purple"
+  },
+  "status": "In development"
+}
